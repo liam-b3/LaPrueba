@@ -27,3 +27,6 @@ RUN composer install
 
 # Comando para iniciar Laravel
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=90s \
+CMD curl --fail http://localhost:10000 || exit 1
